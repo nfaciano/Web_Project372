@@ -1,0 +1,27 @@
+/* myStyle.css content */
+
+h1,p,h2,li {
+    color: rgb(221, 0, 255); 
+}
+
+
+
+
+h2 {
+    font-family: Arial, sans-serif;
+    font-size: 20px; 
+    font-weight: bold; 
+    font-style: italic; 
+}
+
+li {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    font-weight: normal; 
+    font-style: normal; 
+}
+
+body {
+    background: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+
+}

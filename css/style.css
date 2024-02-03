@@ -56,3 +56,7 @@ footer {
 footer a {
   color: #f4d03f; /* Gold */
 }
+
+div {
+  text-align: center;
+}

@@ -1,6 +1,6 @@
 // loadHtmlWithJQuery.js
 function loadHtmlWithJQuery() {
-    $("#eventsList").load("path/to/other-events-data.html", function(response, status, xhr) {
+    $("#eventsList").load("../data/jquery-content.html", function(response, status, xhr) {
         if (status == "error") {
             alert("Error loading the HTML: " + xhr.status + " " + xhr.statusText);
         } else {

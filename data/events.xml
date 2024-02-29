@@ -1,0 +1,17 @@
+<events>
+  <event>
+    <title>Day at the Estate</title>
+    <date>2024-09-20</date>
+    <location>Estate Grounds</location>
+  </event>
+  <event>
+    <title>Wing Night</title>
+    <date>2024-09-22</date>
+    <location>Local Pub</location>
+  </event>
+  <event>
+    <title>Bid Day</title>
+    <date>2024-09-27</date>
+    <location>Chapter House</location>
+  </event>
+</events>

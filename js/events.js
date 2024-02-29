@@ -1,9 +1,13 @@
-// events.js
 $(document).ready(function() {
-    loadHtmlEvents(); // Call this directly or bind to an event
+    // Optionally, automatically load HTML events when the page loads
+    // loadHtmlEvents();
 
-    // For demonstration, binding XML, JSON, and jQuery HTML loaders to buttons
-    document.getElementById('loadXmlBtn').addEventListener('click', loadXmlEvents);
-    document.getElementById('loadJsonBtn').addEventListener('click', loadJsonEvents);
-    $('#loadHtmlJQueryBtn').click(loadHtmlWithJQuery); // jQuery style for event binding
+    // Binding event handlers for buttons
+    $('#loadHtmlBtn').click(loadHtmlEvents); // Handler for loading HTML content directly
+
+    $('#loadXmlBtn').click(loadXmlEvents); // Handler for loading XML content
+
+    $('#loadJsonBtn').click(loadJsonEvents); // Handler for loading JSON content
+
+    $('#loadHtmlJQueryBtn').click(loadHtmlWithJQuery); // Handler for loading HTML content with jQuery effects
 });

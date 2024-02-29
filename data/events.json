@@ -2,16 +2,16 @@
     {
         "title": "Day at the Estate",
         "date": "2024-09-20",
-        "description": "A relaxing day at the historical Green Estate"
+        "location": "Estate Grounds"
     },
     {
         "title": "Wing Night",
         "date": "2024-09-22",
-        "description": "Join us for a fun night of wings, drinks, and good company!"
+        "location": "Local Pub"
     },
     {
         "title": "Bid Day",
         "date": "2024-09-27",
-        "description": "Celebrate the new members of our community!"
+        "location": "Chapter House"
     }
 ]

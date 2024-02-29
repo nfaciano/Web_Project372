@@ -1,11 +1,8 @@
-// loadHtmlEvents.js
 function loadHtmlEvents() {
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("eventsList").innerHTML = this.responseText;
+    $("#eventsList").load("https://nfaciano.rhody.dev/web_projects372/data/events-data.html", function(response, status, xhr) {
+        if (status == "error") {
+            var msg = "Sorry but there was an error: ";
+            $("#eventsList").html(msg + xhr.status + " " + xhr.statusText);
         }
-    };
-    xhr.open("GET", "../data/events-data.html", true);
-    xhr.send();
+    });
 }

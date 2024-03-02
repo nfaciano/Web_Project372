@@ -2,7 +2,7 @@
 function loadXmlMerchandise(callback) {
     $.ajax({
         type: "GET",
-        url: "https://nfaciano.rhody.dev/web_projects372/data/merchandise.xml", // Update this path
+        url: "https://nfaciano.rhody.dev/web_projects372/data/merchandise.xml", 
         dataType: "xml",
         success: function(xml) {
             const items = [];

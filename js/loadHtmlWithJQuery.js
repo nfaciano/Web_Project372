@@ -1,6 +1,5 @@
 
 $(document).ready(function() {
-    // Assuming you have a <section id="aboutus-content"></section> in your main HTML to hold the dynamic content
     $("#aboutus-content").load("https://nfaciano.rhody.dev/web_projects372/data/aboutus-content.html", function(response, status, xhr) {
         if (status == "error") {
             var msg = "Sorry but there was an error: ";

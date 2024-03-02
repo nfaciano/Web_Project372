@@ -15,7 +15,7 @@ $(document).ready(function() {
         }
     });
 
-    // Form submission logic here (if using the same file)
+    // Form submission logic here 
     $('#contact-form').submit(function(e) {
         e.preventDefault(); // Prevent default form submission
         

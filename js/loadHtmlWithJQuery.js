@@ -1,10 +1,10 @@
-function loadHtmlWithJQuery() {
-    $("#eventsList").load("https://nfaciano.rhody.dev/web_projects372/data/jquery-content.html", function(response, status, xhr) {
+
+$(document).ready(function() {
+    // Assuming you have a <section id="aboutus-content"></section> in your main HTML to hold the dynamic content
+    $("#aboutus-content").load("https://nfaciano.rhody.dev/web_projects372/data/aboutus-content.html", function(response, status, xhr) {
         if (status == "error") {
-            alert("Error loading the HTML: " + xhr.status + " " + xhr.statusText);
-        } else {
-            // Optionally, add animations or additional jQuery effects here
-            $(this).hide().fadeIn(1000);
+            var msg = "Sorry but there was an error: ";
+            $("#aboutus-content").html(msg + xhr.status + " " + xhr.statusText);
         }
     });
-}
+});

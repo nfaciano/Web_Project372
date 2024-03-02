@@ -1,27 +1,19 @@
+// merchandise.js
 $(document).ready(function() {
-    const merchandiseItems = [
-        { 
-            id: 1, 
-            name: 'Example Merchandise', 
-            price: '$29.99', 
-            imgUrl: 'images/logo.png', 
-            description: 'A detailed description of the item here. Perfect for all your needs!' 
-        },
-        // Add more items as needed
-    ];
+    loadXmlMerchandise(function(items) {
+        $.each(items, function(index, item) {
+            const itemDiv = $('<div>').addClass('merchandise-item');
+            const img = $('<img>').attr('src', item.imgUrl).attr('alt', item.name).addClass('merchandise-img');
+            const overlayInfo = $('<div>').addClass('overlay-info');
+            const nameSpan = $('<span>').addClass('merchandise-name').text(item.name);
+            const priceSpan = $('<span>').addClass('price-tag').text(item.price);
 
-    $.each(merchandiseItems, function(index, item) {
-        const itemDiv = $('<div>').addClass('merchandise-item');
-        const img = $('<img>').attr('src', item.imgUrl).attr('alt', item.name).addClass('merchandise-img');
-        const overlayInfo = $('<div>').addClass('overlay-info');
-        const nameSpan = $('<span>').addClass('merchandise-name').text(item.name);
-        const priceSpan = $('<span>').addClass('price-tag').text(item.price);
+            overlayInfo.append(nameSpan, priceSpan);
+            itemDiv.append(img, overlayInfo).appendTo('#merchandise-container');
 
-        overlayInfo.append(nameSpan, priceSpan);
-        itemDiv.append(img, overlayInfo).appendTo('#merchandise-container');
-
-        itemDiv.click(function() {
-            showModal(item);
+            itemDiv.click(function() {
+                showModal(item);
+            });
         });
     });
 
@@ -51,9 +43,4 @@ $(document).ready(function() {
             }
         });
     }
-
-    // Add hover effect class to all images once the window is fully loaded
-    $(window).on('load', function() {
-        $('.merchandise-img').addClass('merchandise-img-hover'); // Assuming this class is defined in CSS
-    });
 });

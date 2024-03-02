@@ -23,7 +23,5 @@ $(document).ready(function() {
         var email = $('#email').val().trim();
         var message = $('#message').val().trim();
         
-        // Validation and form submission logic...
-        alert('Form submission logic here.');
     });
 });

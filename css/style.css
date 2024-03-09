@@ -85,3 +85,11 @@ div {
 }
 
 
+#map {
+  height: 400px;
+  width: 40%; 
+  margin: 20px auto; /* Centers the map and adds some space above and below it */
+  border: 3px solid #423189; /* Purple border to match your theme */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow for depth */
+}

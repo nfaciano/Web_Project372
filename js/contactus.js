@@ -28,3 +28,17 @@ $(document).ready(function() {
         }
     });
 });
+
+function initMap() {
+    var lambdaChiLocation = {lat: 41.480670, lng: -71.521940}; // Update with real coordinates
+  
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 15,
+      center: lambdaChiLocation
+    });
+  
+    var marker = new google.maps.Marker({
+      position: lambdaChiLocation,
+      map: map
+    });
+  }

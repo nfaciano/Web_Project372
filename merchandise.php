@@ -26,7 +26,7 @@
     
     <section id="merchandise-container">
     <?php
-    $xml = simplexml_load_file('merchandise.xml');
+    $xml = simplexml_load_file('https://nfaciano.rhody.dev/web_projects372/data/merchandise.xml');
 
     // Array to hold MerchandiseItem objects
     $merchandiseItems = [];

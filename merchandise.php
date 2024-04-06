@@ -13,11 +13,11 @@
     <img src="images/logo.png" alt="Lambda Chi Alpha Logo" width="150" height="150">
 
     <nav>
-        <ul>
+    <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="aboutus.html">About Us</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="merchandise.html">Merchandise</a></li>
+            <li><a href="events.php">Events</a></li>
+            <li><a href="merchandise.php">Merchandise</a></li>
             <li><a href="donate.html">Donate</a></li>
             <li><a href="contactus.html">Contact Us</a></li>
         </ul>

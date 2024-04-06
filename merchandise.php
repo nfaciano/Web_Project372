@@ -28,7 +28,7 @@
     
     <section id="merchandise-container">
     <?php
-    $merchandiseItems = new MerchandiseItem("Lambda Chi T-Shirt", 25.00, 100, "images/logo.png");
+    $merchandiseItems = new MerchandiseItem("Lambda Chi T-Shirt", 25.00, 100, "https://nfaciano.rhody.dev/web_projects372/images/logo.png");
     foreach ($merchandiseItems as $item) {
         echo "<div class='merchandise-item'>";
         echo "<img src='" . htmlspecialchars($merchItem->getImagePath()) . "' alt='" . htmlspecialchars($merchItem->name) . "' class='merchandise-img-hover'>";

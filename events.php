@@ -27,15 +27,18 @@
 
      <!-- Events Content -->
      <section id="eventsList">
-        <?php
-        $event1 = new Event("Charity Run", "2023-04-30", "Campus Grounds", "Join us for a run!");
-        echo "<h2>" . $event1->title . "</h2>";
-        echo "<p>Date: " . $event1->date . "</p>";
-        echo "<p>Location: " . $event1->location . "</p>";
-        echo "<p>Description: " . $event1->description . "</p>";
-        // ... Add more events as needed ...
-        ?>
-    </section>
+    <?php
+    $events = [new Event("Charity Run", "2023-04-30", "Campus Grounds", "Join us for a run!")];
+    foreach ($events as $event) {
+        echo "<div>";
+        echo "<h3>" . htmlspecialchars($event->title) . "</h3>";
+        echo "<p>" . htmlspecialchars($event->date) . "</p>";
+        echo "<p>" . htmlspecialchars($event->location) . "</p>";
+        echo "<p>" . htmlspecialchars($event->description) . "</p>";
+        echo "</div>";
+    }
+    ?>
+</section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>

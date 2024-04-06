@@ -27,14 +27,19 @@
     
     
     <section id="merchandise-container">
-        <?php
-        $merch1 = new MerchandiseItem("Lambda Chi T-Shirt", 25.00, 100);
-        echo "<h2>" . $merch1->name . "</h2>";
-        echo "<p>Price: $" . $merch1->price . "</p>";
-        echo "<p>Stock: " . $merch1->getStock() . "</p>";
-        // ... Add more merchandise items as needed ...
-        ?>
-    </section>
+    <?php
+    $merchandiseItems = [new MerchandiseItem("Lambda Chi T-Shirt", 25.00, 100)];
+    foreach ($merchandiseItems as $item) {
+        echo "<div class='merchandise-item'>";
+        echo "<img src='path/to/image.png' alt='" . htmlspecialchars($item->name) . "' class='merchandise-img-hover'>";
+        echo "<div class='overlay-info'>";
+        echo "<span class='merchandise-name'>" . htmlspecialchars($item->name) . "</span>";
+        echo "<span class='price-tag'>$" . number_format($item->price, 2) . "</span>";
+        echo "</div>";
+        echo "</div>";
+    }
+    ?>
+</section>
 
     <div id="new-arrivals"></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

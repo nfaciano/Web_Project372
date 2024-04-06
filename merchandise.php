@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <?php include 'MerchandiseItem.php'; ?>
     <img src="images/logo.png" alt="Lambda Chi Alpha Logo" width="150" height="150">
 
     <nav>
@@ -24,16 +25,20 @@
     
     <h1>Lambda Chi Alpha Merchandise</h1>
     
+    
     <section id="merchandise-container">
-        <h2>Our Exclusive Collection</h2>
-        <p>Explore our exclusive collection of Lambda Chi Alpha merchandise. From apparel to accessories, find everything you need to show your fraternity pride.</p>
-        <!-- Dynamically loaded merchandise items will go here -->
+        <?php
+        $merch1 = new MerchandiseItem("Lambda Chi T-Shirt", 25.00, 100);
+        echo "<h2>" . $merch1->name . "</h2>";
+        echo "<p>Price: $" . $merch1->price . "</p>";
+        echo "<p>Stock: " . $merch1->getStock() . "</p>";
+        // ... Add more merchandise items as needed ...
+        ?>
     </section>
 
     <div id="new-arrivals"></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="js/loadXmlMerch.js"></script>
-    <script src="js/merchandise.js"></script>
+
 
 
 

@@ -6,12 +6,14 @@ class MerchandiseItem {
     public $name;
     public $price;
     protected $stock; // Protected property
+    public $imagePath; // New property for image path
 
     // Constructor
-    public function __construct($name, $price, $stock) {
+    public function __construct($name, $price, $stock, $imagePath) {
         $this->name = $name;
         $this->price = $price;
         $this->stock = $stock;
+        $this->imagePath = $imagePath; // Set the image path in the constructor
     }
 
     // Method to simulate purchasing an item
@@ -32,5 +34,10 @@ class MerchandiseItem {
     // Setter for the protected stock property
     public function setStock($newStock) {
         $this->stock = $newStock;
+    }
+
+    // Getter for the image path
+    public function getImagePath() {
+        return $this->imagePath;
     }
 }

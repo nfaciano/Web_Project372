@@ -28,13 +28,13 @@
     
     <section id="merchandise-container">
     <?php
-    $merchandiseItems = [new MerchandiseItem("Lambda Chi T-Shirt", 25.00, 100)];
+    $merchandiseItems = new MerchandiseItem("Lambda Chi T-Shirt", 25.00, 100, "images/logo.png");
     foreach ($merchandiseItems as $item) {
         echo "<div class='merchandise-item'>";
-        echo "<img src='path/to/image.png' alt='" . htmlspecialchars($item->name) . "' class='merchandise-img-hover'>";
+        echo "<img src='" . htmlspecialchars($merchItem->getImagePath()) . "' alt='" . htmlspecialchars($merchItem->name) . "' class='merchandise-img-hover'>";
         echo "<div class='overlay-info'>";
-        echo "<span class='merchandise-name'>" . htmlspecialchars($item->name) . "</span>";
-        echo "<span class='price-tag'>$" . number_format($item->price, 2) . "</span>";
+        echo "<span class='merchandise-name'>" . htmlspecialchars($merchItem->name) . "</span>";
+        echo "<span class='price-tag'>$" . number_format($merchItem->price, 2) . "</span>";
         echo "</div>";
         echo "</div>";
     }
@@ -43,7 +43,8 @@
 
     <div id="new-arrivals"></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+    <script src="js/loadXmlMerch.js"></script>
+    <script src="js/merchandise.js"></script>
 
 
 

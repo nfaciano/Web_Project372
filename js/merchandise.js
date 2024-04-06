@@ -1,20 +1,12 @@
-// merchandise.js
 $(document).ready(function() {
-    loadXmlMerchandise(function(items) {
-        $.each(items, function(index, item) {
-            const itemDiv = $('<div>').addClass('merchandise-item');
-            const img = $('<img>').attr('src', item.imgUrl).attr('alt', item.name).addClass('merchandise-img');
-            const overlayInfo = $('<div>').addClass('overlay-info');
-            const nameSpan = $('<span>').addClass('merchandise-name').text(item.name);
-            const priceSpan = $('<span>').addClass('price-tag').text(item.price);
-
-            overlayInfo.append(nameSpan, priceSpan);
-            itemDiv.append(img, overlayInfo).appendTo('#merchandise-container');
-
-            itemDiv.click(function() {
-                showModal(item);
-            });
-        });
+    $('.merchandise-item').click(function() {
+        var item = {
+            name: $(this).find('.merchandise-name').text(),
+            price: $(this).find('.price-tag').text(),
+            description: $(this).data('description'), // Assuming description is stored as a data attribute
+            imgUrl: $(this).find('img').attr('src')
+        };
+        showModal(item);
     });
 
     function showModal(item) {
@@ -23,18 +15,26 @@ $(document).ready(function() {
         const modalOverlay = $('<div>').addClass('details-modal').css('display', 'block');
         const modalContent = $('<div>').addClass('modal-content');
         const closeButton = $('<span>').addClass('close-button').text('×');
+        const purchaseButton = $('<button>').addClass('purchase-button').text('Purchase');
 
         modalContent.append(
             closeButton,
+            $('<img>').attr('src', item.imgUrl).addClass('modal-image'),
             $('<h2>').text(item.name),
-            $('<p>').addClass('price-tag').text(`Price: ${item.price}`),
-            $('<p>').addClass('item-description').text(item.description)
+            $('<p>').addClass('price-tag').text(item.price),
+            $('<p>').addClass('item-description').text(item.description),
+            purchaseButton
         );
 
         modalOverlay.append(modalContent).appendTo('body');
 
         closeButton.click(function() {
             modalOverlay.remove();
+        });
+
+        purchaseButton.click(function() {
+            // Handle the purchase logic here, potentially sending an AJAX request to a PHP script
+            alert('Purchase logic not implemented yet.');
         });
 
         modalOverlay.click(function(event) {

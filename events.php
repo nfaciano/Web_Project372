@@ -43,11 +43,11 @@
     <nav>
         <ul>
             <li><a href="index.php">Home</a></li>
-            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="aboutus.php">About Us</a></li>
             <li><a href="events.php">Events</a></li>
             <li><a href="merchandise.php">Merchandise</a></li>
-            <li><a href="donate.html">Donate</a></li>
-            <li><a href="contactus.html">Contact Us</a></li>
+            <li><a href="donate.php">Donate</a></li>
+            <li><a href="contactus.php">Contact Us</a></li>
             <li><a href="?logout">Logout</a></li>
         </ul>
     </nav>

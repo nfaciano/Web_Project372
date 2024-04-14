@@ -10,32 +10,29 @@
     <?php
     session_start();
 
-    // Improved handling of cookies and sessions
+    // Improved session and cookie management
     if (!isset($_SESSION['visit_count'])) {
-        $_SESSION['visit_count'] = 1; // Initialize the session visit counter
+        $_SESSION['visit_count'] = 1;
     } else {
-        $_SESSION['visit_count']++; // Increment the session visit counter
+        $_SESSION['visit_count']++;
     }
 
-    // Secure cookie operations
-    $userVisitCount = $_COOKIE['visit_count'] ?? 0; // Use null coalescing operator to handle unset cookie
+    $cookieName = 'visit_count';
+    $userVisitCount = $_COOKIE[$cookieName] ?? 0; // Retrieve or initialize cookie
     $userVisitCount++;
-    setcookie('visit_count', $userVisitCount, [
-        'expires' => time() + 3600 * 24 * 30, // 30 days
-        'path' => '/', // Effective across the entire domain
-        'secure' => true, // Cookie is sent over HTTPS only
-        'httponly' => true // Cookie is not accessible via JavaScript (mitigating XSS)
+    setcookie($cookieName, $userVisitCount, [
+        'expires' => time() + 3600 * 24 * 30, // Set for 30 days
+        'path' => '/',
+        'secure' => true,
+        'httponly' => true
     ]);
 
     if (isset($_GET['logout'])) {
-        // Clear session data
         session_unset();
         session_destroy();
-        // Clear the user cookie
-        setcookie('visit_count', '', time() - 3600, '/');
-        // Redirect to the homepage
+        setcookie($cookieName, '', time() - 3600, '/'); // Expire the cookie
         header("Location: index.php");
-        exit; // Always call exit after header redirection
+        exit;
     }
     ?>
 
@@ -53,7 +50,6 @@
         </ul>
     </nav>
 
-    <!-- Page Heading and Content -->
     <h1>Welcome to Lambda Chi Alpha at URI</h1>
     <div>
         <p>You have visited this page <?php echo $_SESSION['visit_count']; ?> times in this session.</p>
@@ -63,7 +59,6 @@
     </div>
     <img src="images/fraternity_house.jpg" alt="Lambda Chi Alpha Fraternity House" width="500" height="300">
     
-    <!-- Author Details -->
     <footer>
         <p>Author: Nicholas Faciano</p>
         <p>Email: <a href="mailto:nfaciano@uri.edu">nfaciano@uri.edu</a></p>

@@ -16,9 +16,10 @@
     $name = $email = $selectedEvent = "";
     $errors = ["name" => "", "email" => "", "event" => ""];
     $successMessage = "";
+    $isSubmittedSuccessfully = false;  // Flag to check submission status
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Collect and sanitize input
+        // Collect input
         $name = htmlspecialchars($_POST["name"] ?? "");
         $email = htmlspecialchars($_POST["email"] ?? "");
         $selectedEvent = htmlspecialchars($_POST["event"] ?? "");
@@ -31,7 +32,9 @@
         // Check for errors
         if (implode("", $errors) === "") {
             $successMessage = "Thank you for registering!";
-            // Process the registration here, like saving to a database or sending an email
+            $isSubmittedSuccessfully = true;  // Set the flag as true
+            // Reset fields after successful registration
+            $name = $email = $selectedEvent = "";
         }
     }
     ?>
@@ -49,7 +52,6 @@
     </nav>
 
     <h1>Upcoming Events</h1>
-    <?php if ($successMessage) echo "<p style='color: green;'>$successMessage</p>"; ?>
     <section id="eventsList">
         <?php
         $events = [
@@ -68,11 +70,6 @@
             echo "<input type='hidden' name='event' value='" . htmlspecialchars($event->title) . "'>";
             echo "<input type='text' name='name' placeholder='Your Name' value='" . htmlspecialchars($name) . "'>";
             echo "<input type='email' name='email' placeholder='Your Email' value='" . htmlspecialchars($email) . "'>";
-            foreach ($errors as $field => $errorMsg) {
-                if ($field === $event->title && $errorMsg) {
-                    echo "<p style='color: red;'>$errorMsg</p>";
-                }
-            }
             echo "<button type='submit'>Register</button>";
             echo "</form>";
             echo "</div>";
@@ -81,5 +78,8 @@
     </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <?php if ($isSubmittedSuccessfully): ?>
+        <script>alert('Thank you for registering!');</script>
+    <?php endif; ?>
 </body>
 </html>

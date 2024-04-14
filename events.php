@@ -10,11 +10,12 @@
 <body>
     <?php
     include 'Event.php'; 
-    include 'validate.php'; // This will include the validation functions
+    include 'validate.php'; // Assume this includes the necessary validation functions
 
     // Initialize variables
     $name = $email = $selectedEvent = "";
     $errors = ["name" => "", "email" => "", "event" => ""];
+    $successMessage = "";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Collect and sanitize input
@@ -29,8 +30,8 @@
 
         // Check for errors
         if (implode("", $errors) === "") {
-            // Process the registration here
-            echo "<p>Thank you for registering!</p>";
+            $successMessage = "Thank you for registering!";
+            // Process the registration here, like saving to a database or sending an email
         }
     }
     ?>
@@ -48,7 +49,7 @@
     </nav>
 
     <h1>Upcoming Events</h1>
-
+    <?php if ($successMessage) echo "<p style='color: green;'>$successMessage</p>"; ?>
     <section id="eventsList">
         <?php
         $events = [
@@ -65,8 +66,13 @@
             echo "<p>" . htmlspecialchars($event->description) . "</p>";
             echo "<form method='POST' action='" . htmlspecialchars($_SERVER["PHP_SELF"]) . "'>";
             echo "<input type='hidden' name='event' value='" . htmlspecialchars($event->title) . "'>";
-            echo "<input type='text' name='name' placeholder='Your Name' value='" . $name . "'>";
-            echo "<input type='email' name='email' placeholder='Your Email' value='" . $email . "'>";
+            echo "<input type='text' name='name' placeholder='Your Name' value='" . htmlspecialchars($name) . "'>";
+            echo "<input type='email' name='email' placeholder='Your Email' value='" . htmlspecialchars($email) . "'>";
+            foreach ($errors as $field => $errorMsg) {
+                if ($field === $event->title && $errorMsg) {
+                    echo "<p style='color: red;'>$errorMsg</p>";
+                }
+            }
             echo "<button type='submit'>Register</button>";
             echo "</form>";
             echo "</div>";

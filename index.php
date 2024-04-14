@@ -8,35 +8,39 @@
 </head>
 <body>
     <?php
+    // Start PHP session
     session_start();
 
-    // Check for logout action
+    // Enable error reporting for debugging
+    ini_set('display_errors', 1);
+    error_reporting(E_ALL);
+
+    // Handle logout
     if (isset($_GET['logout'])) {
         // Clear session data
         session_unset();
         session_destroy();
 
-        // Delete the cookie by setting its expiration to one hour ago
+        // Expire the cookie
         setcookie('visit_count', '', time() - 3600, '/');
 
-        // Redirect to the home page or login page
-        header("Location: index.php");
+        // Redirect to the home page with absolute URL
+        header("Location: https://nfaciano.rhody.dev/web_projects372/index.php");
         exit;
     }
 
-    // Session Management: Track number of page visits in the current session
+    // Session and cookie management
     if (!isset($_SESSION['visit_count'])) {
         $_SESSION['visit_count'] = 1;
     } else {
         $_SESSION['visit_count']++;
     }
 
-    // Cookie Management: Track total number of page visits across all sessions
     $cookieName = 'visit_count';
     $userVisitCount = $_COOKIE[$cookieName] ?? 0;
     $userVisitCount++;
     setcookie($cookieName, $userVisitCount, [
-        'expires' => time() + 3600 * 24 * 30, // Set for 30 days
+        'expires' => time() + 3600 * 24 * 30,
         'path' => '/',
         'secure' => true,
         'httponly' => true

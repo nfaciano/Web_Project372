@@ -10,15 +10,30 @@
     <?php
     session_start();
 
-    // Improved session and cookie management
+    // Check for logout action
+    if (isset($_GET['logout'])) {
+        // Clear session data
+        session_unset();
+        session_destroy();
+
+        // Delete the cookie by setting its expiration to one hour ago
+        setcookie('visit_count', '', time() - 3600, '/');
+
+        // Redirect to the home page or login page
+        header("Location: index.php");
+        exit;
+    }
+
+    // Session Management: Track number of page visits in the current session
     if (!isset($_SESSION['visit_count'])) {
         $_SESSION['visit_count'] = 1;
     } else {
         $_SESSION['visit_count']++;
     }
 
+    // Cookie Management: Track total number of page visits across all sessions
     $cookieName = 'visit_count';
-    $userVisitCount = $_COOKIE[$cookieName] ?? 0; // Retrieve or initialize cookie
+    $userVisitCount = $_COOKIE[$cookieName] ?? 0;
     $userVisitCount++;
     setcookie($cookieName, $userVisitCount, [
         'expires' => time() + 3600 * 24 * 30, // Set for 30 days
@@ -26,14 +41,6 @@
         'secure' => true,
         'httponly' => true
     ]);
-
-    if (isset($_GET['logout'])) {
-        session_unset();
-        session_destroy();
-        setcookie($cookieName, '', time() - 3600, '/'); // Expire the cookie
-        header("Location: index.php");
-        exit;
-    }
     ?>
 
     <!-- Logo and Navigation Bar -->

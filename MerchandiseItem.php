@@ -1,43 +1,34 @@
 <?php
-// MerchandiseItem.php
-
 class MerchandiseItem {
-    // Properties
+    public $id;
     public $name;
     public $price;
-    protected $stock; // Protected property
-    public $imagePath; // New property for image path
+    public $stock;
+    public $imagePath;
 
-    // Constructor
-    public function __construct($name, $price, $stock, $imagePath) {
+    public function __construct($id, $name, $price, $stock, $imagePath) {
+        $this->id = $id;
         $this->name = $name;
         $this->price = $price;
         $this->stock = $stock;
-        $this->imagePath = $imagePath; // Set the image path in the constructor
+        $this->imagePath = $imagePath;
     }
 
-    // Method to simulate purchasing an item
-    public function purchase($quantity) {
-        if ($this->stock >= $quantity) {
-            $this->stock -= $quantity;
-            return "Purchased $quantity of " . $this->name;
-        } else {
-            return "Not enough stock for " . $this->name;
+    public static function getAllMerchandiseItems(PDO $pdo) {
+        $stmt = $pdo->query("SELECT * FROM merchandise");
+        $items = [];
+
+        while ($row = $stmt->fetch()) {
+            $items[] = new MerchandiseItem(
+                $row['item_id'],
+                $row['item_name'],
+                $row['item_price'],
+                $row['item_stock'],
+                $row['item_img_url']
+            );
         }
-    }
 
-    // Getter for the protected stock property
-    public function getStock() {
-        return $this->stock;
-    }
-
-    // Setter for the protected stock property
-    public function setStock($newStock) {
-        $this->stock = $newStock;
-    }
-
-    // Getter for the image path
-    public function getImagePath() {
-        return $this->imagePath;
+        return $items;
     }
 }
+?>

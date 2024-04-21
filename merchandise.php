@@ -22,6 +22,7 @@
             <li><a href="merchandise.php">Merchandise</a></li>
             <li><a href="donate.php">Donate</a></li>
             <li><a href="contactus.php">Contact Us</a></li>
+            <li><a href="?logout">Logout</a></li>
         </ul>
     </nav>
 

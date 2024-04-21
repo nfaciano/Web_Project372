@@ -54,7 +54,7 @@
         }
     }
     ?>
-
+    <img src="images/logo.png" alt="Lambda Chi Alpha Logo" width="150" height="150">
     <nav>
         <ul>
             <li><a href="index.php">Home</a></li>

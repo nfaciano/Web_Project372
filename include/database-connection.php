@@ -5,7 +5,7 @@ $db       = 'nfaciano_lambdachiuri';    // Name of the database
 $port     = '3306';                           // Port is usually 3306 in Hostgator
 $charset  = 'utf8mb4';                       // UTF-8 encoding using 4 bytes of data per char
 
-$username = 'nfaciano_superuser';     // Enter YOUR cPanel username and user here
+$username = 'nfaciano_superadmin';     // Enter YOUR cPanel username and user here
 $password = 'Thisisatest!';           // Enter YOUR user password here                                        
 
 $options  = [                        // Options for how PDO works
